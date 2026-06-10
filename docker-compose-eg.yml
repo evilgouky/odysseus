@@ -15,8 +15,10 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     devices:
-      - /dev/dri/renderD128:/dev/dri/renderD128
-      - /dev/dri/card1:/dev/dri/card1
+      - /dev/dri:/dev/dri
+    group_add:
+      - "44"
+      - "993"
     environment:
       - LLM_HOST=${LLM_HOST:-localhost}
       - LLM_HOSTS=${LLM_HOSTS:-}
